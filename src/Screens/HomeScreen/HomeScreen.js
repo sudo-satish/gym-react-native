@@ -1,4 +1,4 @@
 import React from 'react';
 import BlankScreen from '../BlankScreen/BlankScreen';
 
-export default () => <BlankScreen title="Home" />;
+export default ({...props}) => <BlankScreen {...props} title="Home" />;

@@ -2,5 +2,11 @@
 
 import React from 'react';
 import AddTraineeForm from "../../Forms/AddTraineeForm/AddTraineeForm";
+import ScreenHeader from '../../Layouts/ScreenHeader/ScreenHeader';
 
-export default () => <AddTraineeForm />;
+export default ({ ...props }) => (
+  <>
+    <ScreenHeader {...props} title="Add Trainee" />
+    <AddTraineeForm />
+  </>
+);

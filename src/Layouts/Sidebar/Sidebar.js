@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from "react-native";
 import { Link } from 'react-router-native';
 import { SideBarRoutes } from '../../../Routes';
-
+import { ListItem, Icon } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   navigationContainer: {
@@ -13,18 +13,38 @@ const styles = StyleSheet.create({
   }
 });
 
-export default (
-  <View style={styles.navigationContainer}>
-    <Link to="/" underlayColor="#f0f4f7">
-      <Text style={{ margin: 10, fontSize: 15 }}>Home Page</Text>
-    </Link>
-    <View>
-      {SideBarRoutes().map((route, index) => (
-        <Link key={index} to={route.path} underlayColor="#f0f4f7">
-          <Text>{route.title}</Text>
+export default ({ drawerRef }) => {
+
+    return (
+      <View style={styles.navigationContainer}>
+        <Link
+          to="/"
+          onPress={() => drawerRef.current.closeDrawer()}
+          underlayColor="#f0f4f7"
+        >
+          <Text style={{ margin: 10, fontSize: 15 }}>Home Page</Text>
         </Link>
-      ))}
-    </View>
-  </View>
-);
+        <View>
+          {SideBarRoutes().map((route, index) => (
+            <Link
+              key={index}
+              to={route.path}
+              onPress={() => drawerRef.current.closeDrawer()}
+              underlayColor="#f0f4f7"
+            >
+              <ListItem bottomDivider>
+                <Icon name="av-timer" />
+                <ListItem.Content>
+                  <ListItem.Title>
+                    <Text>{route.title}</Text>
+                  </ListItem.Title>
+                </ListItem.Content>
+                <ListItem.Chevron />
+              </ListItem>
+            </Link>
+          ))}
+        </View>
+      </View>
+    );
+};
 
