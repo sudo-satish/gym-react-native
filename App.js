@@ -1,21 +1,25 @@
+import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { DrawerLayoutAndroid } from 'react-native';
+import AppRouter from './AppRouter';
+import SideBar from './src/Layouts/Sidebar/Sidebar';
+import { NativeRouter } from "react-router-native";
 
 export default function App() {
+  const [drawerPosition, setDrawerPosition] = useState("left");
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <NativeRouter>
+        <DrawerLayoutAndroid
+          drawerWidth={300}
+          drawerPosition={drawerPosition}
+          renderNavigationView={() => SideBar}
+        >
+          <AppRouter />
+          <StatusBar style="auto" />
+        </DrawerLayoutAndroid>
+      </NativeRouter>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
