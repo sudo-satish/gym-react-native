@@ -5,40 +5,48 @@ import AlternateDietScreen from "./src/Screens/AlternateDietScreen/AlternateDiet
 import DietTimelineScreen from "./src/Screens/DietTimelineScreen/DietTimelineScreen";
 import HomeScreen from "./src/Screens/HomeScreen/HomeScreen";
 import LoginScreen from "./src/Screens/LoginScreen/LoginScreen";
+import MotivationScreen from "./src/Screens/MotivationScreen/MotivationScreen";
 import TrainingScreen from "./src/Screens/TrainingScreen/TrainingScreen";
 import WorkoutPlansScreen from "./src/Screens/WorkoutPlansScreen/WorkoutPlansScreen";
 
 export const SideBarRoutes = () => [
-  { path: "/about", title: "About Us", component: AboutScreen },
   {
-    path: "/addTrainee",
-    title: "Add Trainee",
-    component: AddTraineeScreen,
-  },
-  {
-    path: "/addFoodItem",
+    path: "/dietTimeLine",
     title: "Diet Timeline",
     icon: "restaurant",
     component: DietTimelineScreen,
   },
   {
-    path: "/dietTimeLine",
-    title: "Add Food Item",
-    icon: "cake",
-    component: AddFoodItemScreen,
-  },
-  {
     path: "/workoutPlans",
+    icon: "fitness-center",
     title: "Workout Plans",
-    icon: "cake",
     component: WorkoutPlansScreen,
   },
   {
     path: "/startTraining",
     title: "Training Screen",
-    icon: "accessible",
+    icon: "grade",
     component: TrainingScreen,
   },
+  {
+    path: "/motivation",
+    title: "Motivation",
+    icon: "favorite",
+    component: MotivationScreen,
+  },
+  {
+    path: "/addTrainee",
+    title: "Add Trainee",
+    icon: "face",
+    component: AddTraineeScreen,
+  },
+  {
+    path: "/addFoodItem",
+    title: "Add Food Item",
+    icon: "add-circle",
+    component: AddFoodItemScreen,
+  },
+  { path: "/about", title: "About Us", component: AboutScreen },
 ];
 
 export default () => [

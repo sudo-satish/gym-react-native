@@ -18,11 +18,15 @@
     "react-native-calendars": "^1.403.0",
     "react-native-chart-kit": "^6.7.0",
     "react-native-elements": "^3.0.0-alpha.1",
+    "react-native-snap-carousel": "^3.9.1",
     "react-native-svg": "^12.1.0",
     "react-native-timeline-flatlist": "^0.7.3",
     "react-native-timeline-listview": "^0.2.3",
+    "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12",
-    "react-router-native": "^5.2.0"
+    "react-router-native": "^5.2.0",
+    "expo-av": "~8.6.0",
+    "expo-sharing": "~8.4.1"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

@@ -1,7 +1,9 @@
 import React from "react";
 import { View, Text, Dimensions, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import BlankScreen from "../BlankScreen/BlankScreen";
+import Carousel, { ParallaxImage } from "react-native-snap-carousel";
+const { width: screenWidth } = Dimensions.get("window");
+
 import {
   LineChart,
   BarChart,
@@ -80,16 +82,55 @@ const WightChart = () => (
   </View>
 );
 
+const items = [
+  {
+    // title: "Some Title",
+    thumbnail:
+      "https://as2.ftcdn.net/jpg/02/65/27/43/500_F_265274361_UocQcZu2sUKZaRkyudAKJm9RSUbYtY6E.jpg",
+  },
+  {
+    // title: "Some Other Title",
+    thumbnail:
+      "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/never-give-up-fitness-training-gym-motivation-mister-tee.jpg",
+  },
+  {
+    // title: "Some Other Title",
+    thumbnail: "https://miro.medium.com/max/5000/1*GAobIoeZ3lqgwD9MIRaRxg.jpeg",
+  },
+];
+
 // export default ({ ...props }) => <BlankScreen {...props} title="Home" />;
-export default ({ ...props }) => (
-  <>
-    <ScreenHeader {...props} title="Dashboard" />
-    <WightChart />
-    <View style={styles.button}>
-      <LinkButton to="/startTraining" />
+export default ({ ...props }) => {
+  const _renderItem = ({ item, index }, parallaxProps) => (
+    <View style={styles.item}>
+      <ParallaxImage
+        source={{ uri: item.thumbnail }}
+        containerStyle={styles.imageContainer}
+        style={styles.image}
+        parallaxFactor={0.4}
+        {...parallaxProps}
+      />
     </View>
-  </>
-);
+  );
+  return (
+    <>
+      <ScreenHeader {...props} title="Dashboard" />
+      <WightChart />
+      <View style={styles.button}>
+        <LinkButton to="/startTraining" />
+      </View>
+
+      <Carousel
+        sliderWidth={screenWidth}
+        sliderHeight={screenWidth}
+        itemWidth={screenWidth - 60}
+        data={items}
+        renderItem={_renderItem}
+        hasParallaxImages={true}
+      />
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -98,5 +139,19 @@ const styles = StyleSheet.create({
   button: {
     marginVertical: 10,
     marginHorizontal: 10,
+  },
+  item: {
+    width: screenWidth - 60,
+    height: screenWidth - 60,
+  },
+  imageContainer: {
+    flex: 1,
+    marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
+    backgroundColor: "white",
+    borderRadius: 8,
+  },
+  image: {
+    ...StyleSheet.absoluteFillObject,
+    resizeMode: "cover",
   },
 });
