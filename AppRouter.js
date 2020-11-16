@@ -4,18 +4,21 @@ import { Route } from "react-router-native";
 import Routes from "./Routes";
 
 const AppRouter = ({ drawerRef }) => {
-    return (
-  <View>
-    {Routes().map((route, index) => (
-      <Route
-        exact={route.exact}
-        key={index}
-        path={route.path}
-        component={(...props) => <route.component drawerRef={drawerRef} {...props}/>}
-      />
-    ))}
-  </View>
-)};
+  return (
+    <>
+      {Routes().map((route, index) => (
+        <Route
+          exact={route.exact}
+          key={index}
+          path={route.path}
+          component={(...props) => (
+            <route.component drawerRef={drawerRef} {...props} />
+          )}
+        />
+      ))}
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

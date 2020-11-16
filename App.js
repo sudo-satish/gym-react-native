@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
-import { StatusBar } from 'expo-status-bar';
-import { DrawerLayoutAndroid } from 'react-native';
-import AppRouter from './AppRouter';
-import SideBar from './src/Layouts/Sidebar/Sidebar';
+import { StatusBar } from "expo-status-bar";
+import { DrawerLayoutAndroid } from "react-native";
+import AppRouter from "./AppRouter";
+import SideBar from "./src/Layouts/Sidebar/Sidebar";
 import { NativeRouter } from "react-router-native";
 
 export default function App() {
